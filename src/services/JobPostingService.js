@@ -3,8 +3,12 @@ import axios from "axios";
 const apiPath = "/api/jobs";
 
 export default class JobPostingService {
-  getJobPostings() {
+  getAll() {
     return axios.get(`${apiPath}/getAll`);
+  }
+
+  add(body) {
+    return axios.post(`${apiPath}/add`, body);
   }
 
   addJobPosting(jobPosting) {

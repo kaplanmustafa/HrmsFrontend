@@ -23,9 +23,11 @@ const Navi = () => {
       <Menu inverted fixed="top">
         <Container>
           <Menu.Item>
-            <Link to="/">Home</Link>
+            <Link to="/">Ana Sayfa</Link>
           </Menu.Item>
-          <Menu.Item name="messages" />
+          <Menu.Item name="messages">
+            <Link to="/newJobPosting">Yeni İlan</Link>
+          </Menu.Item>
 
           <Menu.Menu position="right">
             {isAuthenticated ? (

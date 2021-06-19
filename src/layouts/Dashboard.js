@@ -1,20 +1,17 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
-import { Route, useRouteMatch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
+import AddJobPosting from "../pages/AddJobPosting";
 
 export default function Dashboard() {
-  const matched = useRouteMatch("/");
-  const { isExact: isHomePage } = matched;
-
   return (
     <div>
-      <Grid columns={2}>
+      <Grid>
         <Grid.Row>
-          {!isHomePage && <Grid.Column width={4}> MENU </Grid.Column>}
-          <Grid.Column width={isHomePage ? 16 : 12}>
+          <Grid.Column>
             <Route exact path="/" component={HomePage} />
-            {/* <Route exact path="/a" component={A} /> */}
+            <Route exact path="/newJobPosting" component={AddJobPosting} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
