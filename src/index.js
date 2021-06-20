@@ -6,11 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 import "semantic-ui-css/semantic.min.css";
 import { BrowserRouter } from "react-router-dom";
 import "alertifyjs/build/css/alertify.min.css";
+import "react-toastify/dist/ReactToastify.min.css";
+import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
+
+const store = configureStore();
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 

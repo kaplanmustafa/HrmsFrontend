@@ -317,7 +317,13 @@ const AddJobPosting = () => {
               )}
             </Form.Field>
 
-            <Button type="submit" color="teal" fluid size="large">
+            <Button
+              type="submit"
+              color="teal"
+              fluid
+              size="large"
+              style={{ marginTop: "2em" }}
+            >
               OLUŞTUR
             </Button>
           </Form>

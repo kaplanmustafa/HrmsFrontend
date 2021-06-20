@@ -7,7 +7,7 @@ export default class EmployerService {
     return axios.get(`${apiPath}/getAll`);
   }
 
-  addEmployer(employerDto) {
+  add(employerDto) {
     return axios.post(`${apiPath}/add`, employerDto);
   }
 }
