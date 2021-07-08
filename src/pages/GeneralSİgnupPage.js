@@ -37,17 +37,19 @@ const GeneralSİgnupPage = () => {
           </Link>
         </div>
         <div className="column">
-          <div className="ui fluid card">
-            <div className="image">
-              <img
-                src="https://semantic-ui.com/images/avatar2/large/molly.png"
-                alt="employer"
-              />
+          <Link to="/employer/signup">
+            <div className="ui fluid card">
+              <div className="image">
+                <img
+                  src="https://semantic-ui.com/images/avatar2/large/molly.png"
+                  alt="employer"
+                />
+              </div>
+              <div className="content">
+                <div className="header">İşveren</div>
+              </div>
             </div>
-            <div className="content">
-              <div className="header">İşveren</div>
-            </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

@@ -5,12 +5,12 @@ import { Button, Input, Card, Form, Grid, Header } from "semantic-ui-react";
 import employeeSignupImage from "../assets/images/employeeSignup.jpg";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { emloyeeSignupHandler } from "../store/actions/authActions";
+import { staffSignupHandler } from "../store/actions/authActions";
 
-const EmployeeSignupPage = () => {
+const StaffSignupPage = () => {
   const dispatch = useDispatch();
 
-  const EmployeeSignupSchema = Yup.object().shape({
+  const StaffSignupSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Çok Kısa!")
       .max(50, "Çok Uzun!")
@@ -53,9 +53,9 @@ const EmployeeSignupPage = () => {
       password: undefined,
       passwordRepeat: undefined,
     },
-    validationSchema: EmployeeSignupSchema,
+    validationSchema: StaffSignupSchema,
     onSubmit: (values) => {
-      dispatch(emloyeeSignupHandler(values)).then((result) => {
+      dispatch(staffSignupHandler(values)).then((result) => {
         result.data.success === true
           ? toast.success(result.data.message)
           : toast.error(result.data.message);
@@ -70,7 +70,7 @@ const EmployeeSignupPage = () => {
   return (
     <div style={{ marginTop: "5rem" }}>
       <Header as="h1" color="teal" textAlign="center">
-        Kullanıcı Kayıt
+        Personel Kayıt
       </Header>
       <Card fluid>
         <Card.Content>
@@ -234,7 +234,7 @@ const EmployeeSignupPage = () => {
               size="large"
               style={{ marginTop: "2em" }}
             >
-              KAYDOL
+              PERSONEL EKLE
             </Button>
           </Form>
         </Card.Content>
@@ -249,4 +249,4 @@ const EmployeeSignupPage = () => {
   );
 };
 
-export default EmployeeSignupPage;
+export default StaffSignupPage;
