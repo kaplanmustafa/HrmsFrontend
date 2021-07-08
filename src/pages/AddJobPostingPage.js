@@ -20,7 +20,7 @@ import * as utilMethods from "../core/Utilities";
 import alertify from "alertifyjs";
 import { useHistory } from "react-router-dom";
 
-const AddJobPosting = () => {
+const AddJobPostingPage = () => {
   const [jobTypes, setJobTypes] = useState([]);
   const [cities, setCities] = useState([]);
   const [jobPositions, setJobPositions] = useState([]);
@@ -339,4 +339,4 @@ const AddJobPosting = () => {
   );
 };
 
-export default AddJobPosting;
+export default AddJobPostingPage;

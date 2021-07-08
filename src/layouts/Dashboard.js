@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "semantic-ui-react";
 import { Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
-import AddJobPosting from "../pages/AddJobPosting";
+import AddJobPostingPage from "../pages/AddJobPostingPage";
 import EmployeeSignupPage from "../pages/EmployeeSignupPage";
 import { ToastContainer } from "react-toastify";
 import GeneralSİgnupPage from "../pages/GeneralSİgnupPage";
@@ -18,7 +18,7 @@ export default function Dashboard() {
           <Grid.Column>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/staff/signup" component={StaffSignupPage} />
-            <Route exact path="/newJobPosting" component={AddJobPosting} />
+            <Route exact path="/newJobPosting" component={AddJobPostingPage} />
             <Route exact path="/signup" component={GeneralSİgnupPage} />
             <Route
               exact
