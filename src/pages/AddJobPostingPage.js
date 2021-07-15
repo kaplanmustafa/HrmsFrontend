@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Dropdown,
-  Input,
-  TextArea,
-  Card,
-  Form,
-  Grid,
-  Header,
-} from "semantic-ui-react";
+import { Button, Card, Form, Grid, Header } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import undraw_jobAdvertisementCreate from "../assets/images/undraw_jobAdvertisementCreate.png";
@@ -19,6 +10,9 @@ import JobPostingService from "../services/JobPostingService";
 import * as utilMethods from "../core/Utilities";
 import alertify from "alertifyjs";
 import { useHistory } from "react-router-dom";
+import HrmsInput from "../components/HrmsInput";
+import HrmsDropdown from "../components/HrmsDropdown";
+import HrmsTextArea from "../components/HrmsTextArea";
 
 const AddJobPostingPage = () => {
   const [jobTypes, setJobTypes] = useState([]);
@@ -116,205 +110,141 @@ const AddJobPostingPage = () => {
           <Form onSubmit={formik.handleSubmit}>
             <Form.Field>
               <Grid stackable>
-                <Grid.Column width={8} textAlign="left">
-                  <label>İş Pozisyonu</label>
-                  <Dropdown
-                    style={{ width: "100%" }}
-                    clearable
-                    item
-                    placeholder="İş pozisyonu"
-                    search
-                    selection
-                    onChange={(event, data) =>
-                      handleChangeSelect(data.value, "jobPositionId")
-                    }
-                    onBlur={formik.onBlur}
-                    id="jobPositionId"
-                    value={formik.values.jobPositionId}
-                    options={jobPositionOptions}
-                  />
-                  {formik.errors.jobPositionId &&
-                    formik.touched.jobPositionId && (
-                      <div className={"ui pointing red basic label"}>
-                        {formik.errors.jobPositionId}
-                      </div>
-                    )}
-                </Grid.Column>
-                <Grid.Column width={8} textAlign="left">
-                  <label>Şehir</label>
-                  <Dropdown
-                    style={{ width: "100%" }}
-                    clearable
-                    item
-                    placeholder="Şehir"
-                    search
-                    selection
-                    onChange={(event, data) =>
-                      handleChangeSelect(data.value, "cityId")
-                    }
-                    onBlur={formik.onBlur}
-                    id="cityId"
-                    value={formik.values.cityId}
-                    options={cityOptions}
-                  />
-                  {formik.errors.cityId && formik.touched.cityId && (
-                    <div className={"ui pointing red basic label"}>
-                      {formik.errors.cityId}
-                    </div>
-                  )}
-                </Grid.Column>
+                <HrmsDropdown
+                  label="İş Pozisyonu"
+                  placeholder="İş Pozisyonu"
+                  value={formik.values.jobPositionId}
+                  options={jobPositionOptions}
+                  search={true}
+                  onChange={(event, data) =>
+                    handleChangeSelect(data.value, "jobPositionId")
+                  }
+                  onBlur={formik.onBlur}
+                  id="jobPositionId"
+                  error={
+                    formik.errors.jobPositionId && formik.touched.jobPositionId
+                  }
+                  showError={formik.errors.jobPositionId}
+                />
+                <HrmsDropdown
+                  columnWidth="8"
+                  label="Şehir"
+                  placeholder="Şehir"
+                  value={formik.values.cityId}
+                  options={cityOptions}
+                  search={true}
+                  onChange={(event, data) =>
+                    handleChangeSelect(data.value, "cityId")
+                  }
+                  onBlur={formik.onBlur}
+                  id="cityId"
+                  error={formik.errors.cityId && formik.touched.cityId}
+                  showError={formik.errors.cityId}
+                />
               </Grid>
             </Form.Field>
 
             <Form.Field>
               <Grid stackable>
-                <Grid.Column width={8} textAlign="left">
-                  <label>Çalışma Şekli</label>
-                  <Dropdown
-                    style={{ width: "100%" }}
-                    clearable
-                    item
-                    placeholder="Çalışma Şekli"
-                    selection
-                    onChange={(event, data) =>
-                      handleChangeSelect(data.value, "jobTypeId")
-                    }
-                    onBlur={formik.onBlur}
-                    id="jobTypeId"
-                    value={formik.values.jobTypeId}
-                    options={jobTypeOptions}
-                  />
-                  {formik.errors.jobTypeId && formik.touched.jobTypeId && (
-                    <div className={"ui pointing red basic label"}>
-                      {formik.errors.jobTypeId}
-                    </div>
-                  )}
-                </Grid.Column>
-                <Grid.Column width={8} textAlign="left">
-                  <label>Uzaktan Çalışma</label>
-                  <Dropdown
-                    style={{ width: "100%" }}
-                    clearable
-                    item
-                    placeholder="Uzaktan Çalışma"
-                    selection
-                    onChange={(event, data) =>
-                      handleChangeSelect(data.value, "isRemote")
-                    }
-                    onBlur={formik.onBlur}
-                    id="isRemote"
-                    value={formik.values.isRemote}
-                    options={remoteOptions}
-                  />
-                  {formik.errors.isRemote && formik.touched.isRemote && (
-                    <div className={"ui pointing red basic label"}>
-                      {formik.errors.isRemote}
-                    </div>
-                  )}
-                </Grid.Column>
+                <HrmsDropdown
+                  label="Çalışma Şekli"
+                  placeholder="Çalışma Şekli"
+                  value={formik.values.jobTypeId}
+                  options={jobTypeOptions}
+                  search={false}
+                  onChange={(event, data) =>
+                    handleChangeSelect(data.value, "jobTypeId")
+                  }
+                  onBlur={formik.onBlur}
+                  id="jobTypeId"
+                  error={formik.errors.jobTypeId && formik.touched.jobTypeId}
+                  showError={formik.errors.jobTypeId}
+                />
+                <HrmsDropdown
+                  label="Uzaktan Çalışma"
+                  placeholder="Uzaktan Çalışma"
+                  value={formik.values.isRemote}
+                  options={remoteOptions}
+                  search={false}
+                  onChange={(event, data) =>
+                    handleChangeSelect(data.value, "isRemote")
+                  }
+                  onBlur={formik.onBlur}
+                  id="isRemote"
+                  error={formik.errors.isRemote && formik.touched.isRemote}
+                  showError={formik.errors.isRemote}
+                />
               </Grid>
             </Form.Field>
 
             <Form.Field>
               <Grid stackable>
-                <Grid.Column width={8} textAlign="left">
-                  <label>Minimum Maaş</label>
-                  <Input
-                    style={{ width: "100%" }}
-                    type="number"
-                    placeholder="Minimum Maaş"
-                    value={formik.values.minSalary}
-                    name="minSalary"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  ></Input>
-                  {formik.errors.minSalary && formik.touched.minSalary && (
-                    <div className={"ui pointing red basic label"}>
-                      {formik.errors.minSalary}
-                    </div>
-                  )}
-                </Grid.Column>
-                <Grid.Column width={8} textAlign="left">
-                  <label>Maksimum Maaş</label>
-                  <Input
-                    style={{ width: "100%" }}
-                    type="number"
-                    placeholder="Maksimum Maaş"
-                    value={formik.values.maxSalary}
-                    name="maxSalary"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  ></Input>
-                  {formik.errors.maxSalary && formik.touched.maxSalary && (
-                    <div className={"ui pointing red basic label"}>
-                      {formik.errors.maxSalary}
-                    </div>
-                  )}
-                </Grid.Column>
+                <HrmsInput
+                  label="Minimum Maaş"
+                  type="number"
+                  placeholder="Minimum Maaş"
+                  value={formik.values.minSalary}
+                  name="minSalary"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.errors.minSalary && formik.touched.minSalary}
+                  showError={formik.errors.minSalary}
+                />
+                <HrmsInput
+                  label="Maksimum Maaş"
+                  type="number"
+                  placeholder="Maksimum Maaş"
+                  value={formik.values.maxSalary}
+                  name="maxSalary"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.errors.maxSalary && formik.touched.maxSalary}
+                  showError={formik.errors.maxSalary}
+                />
               </Grid>
             </Form.Field>
 
             <Form.Field>
               <Grid stackable>
-                <Grid.Column width={8} textAlign="left">
-                  <label>Açık Pozisyon sayısı</label>
-                  <Input
-                    style={{ width: "100%" }}
-                    id="numberOfEmployees"
-                    name="numberOfEmployees"
-                    error={Boolean(formik.errors.numberOfEmployees)}
-                    onChange={formik.handleChange}
-                    value={formik.values.numberOfEmployees}
-                    onBlur={formik.handleBlur}
-                    type="number"
-                    placeholder="Açık Pozisyon Sayısı"
-                  />
-                  {formik.errors.numberOfEmployees &&
-                    formik.touched.numberOfEmployees && (
-                      <div className={"ui pointing red basic label"}>
-                        {formik.errors.numberOfEmployees}
-                      </div>
-                    )}
-                </Grid.Column>
-                <Grid.Column width={8} textAlign="left">
-                  <label>Son başvuru tarihi</label>
-                  <Input
-                    style={{ width: "100%" }}
-                    type="date"
-                    error={Boolean(formik.errors.endDate)}
-                    onChange={(event, data) =>
-                      handleChangeSelect(data.value, "endDate")
-                    }
-                    value={formik.values.endDate}
-                    onBlur={formik.handleBlur}
-                    name="endDate"
-                    placeholder="Son başvuru tarihi"
-                  />
-                  {formik.errors.endDate && formik.touched.endDate && (
-                    <div className={"ui pointing red basic label"}>
-                      {formik.errors.endDate}
-                    </div>
-                  )}
-                </Grid.Column>
+                <HrmsInput
+                  label="Açık Pozisyon sayısı"
+                  type="number"
+                  placeholder="Açık Pozisyon sayısı"
+                  value={formik.values.numberOfEmployees}
+                  name="numberOfEmployees"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.errors.numberOfEmployees &&
+                    formik.touched.numberOfEmployees
+                  }
+                  showError={formik.errors.numberOfEmployees}
+                />
+                <HrmsInput
+                  label="Son başvuru tarihi"
+                  type="date"
+                  placeholder="Son başvuru tarihi"
+                  value={formik.values.endDate}
+                  name="endDate"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.errors.endDate && formik.touched.endDate}
+                  showError={formik.errors.endDate}
+                />
               </Grid>
             </Form.Field>
 
             <Form.Field>
-              <label style={{ textAlign: "left" }}>Açıklama</label>
-              <TextArea
+              <HrmsTextArea
+                label="Açıklama"
                 placeholder="Açıklama"
-                style={{ minHeight: 100 }}
-                error={Boolean(formik.errors.description).toString()}
                 value={formik.values.description}
                 name="description"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                error={formik.errors.description && formik.touched.description}
+                showError={formik.errors.description}
               />
-              {formik.errors.description && formik.touched.description && (
-                <div className={"ui pointing red basic label"}>
-                  {formik.errors.description}
-                </div>
-              )}
             </Form.Field>
 
             <Button
