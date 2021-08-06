@@ -8,6 +8,8 @@ import { ToastContainer } from "react-toastify";
 import GeneralSİgnupPage from "../pages/GeneralSİgnupPage";
 import EmployerSignupPage from "../pages/EmployerSignupPage";
 import StaffSignupPage from "../pages/StaffSignupPage";
+import EmployeeLoginPage from "../pages/EmployeeLoginPage";
+import GeneralLoginPage from "../pages/GeneralLoginPage";
 
 export default function Dashboard() {
   return (
@@ -20,6 +22,7 @@ export default function Dashboard() {
             <Route exact path="/staff/signup" component={StaffSignupPage} />
             <Route exact path="/newJobPosting" component={AddJobPostingPage} />
             <Route exact path="/signup" component={GeneralSİgnupPage} />
+            <Route exact path="/login" component={GeneralLoginPage} />
             <Route
               exact
               path="/employee/signup"
@@ -30,6 +33,7 @@ export default function Dashboard() {
               path="/employer/signup"
               component={EmployerSignupPage}
             />
+            <Route exact path="/employee/login" component={EmployeeLoginPage} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

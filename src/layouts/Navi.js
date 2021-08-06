@@ -5,17 +5,14 @@ import SignedIn from "./SignedIn";
 import { useHistory, Link } from "react-router-dom";
 
 const Navi = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const history = useHistory();
 
-  const handleSignOut = (params) => {
-    setIsAuthenticated(false);
-    history.push("/");
-  };
+  const handleSignOut = (params) => {};
 
   const handleSignIn = (params) => {
-    setIsAuthenticated(true);
+    history.push("/login");
   };
 
   return (

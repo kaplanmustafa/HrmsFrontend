@@ -14,6 +14,8 @@ const HrmsInput = (props) => {
     onBlur,
     error,
     showError,
+    icon,
+    iconPosition,
   } = props;
 
   return (
@@ -28,6 +30,8 @@ const HrmsInput = (props) => {
         name={name}
         onChange={onChange}
         onBlur={onBlur}
+        icon={icon}
+        iconPosition={iconPosition}
       ></Input>
       {error && (
         <div className={"ui pointing red basic label"}>{showError}</div>

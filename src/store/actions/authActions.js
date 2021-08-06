@@ -1,3 +1,4 @@
+import { employeeLogin } from "../../services/AuthService";
 import EmployeeService from "../../services/EmployeeService";
 import EmployerService from "../../services/EmployerService";
 import StaffService from "../../services/StaffService";
@@ -6,6 +7,16 @@ export const emloyeeSignupHandler = (employee) => {
   return async function () {
     let employeeService = new EmployeeService();
     const response = await employeeService.add(employee);
+    return response;
+  };
+};
+
+export const emloyeeLoginHandler = (employeeCreds) => {
+  return async function () {
+    const response = await employeeLogin({
+      ...employeeCreds,
+      userType: "employee",
+    });
     return response;
   };
 };

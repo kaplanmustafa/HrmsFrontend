@@ -1,12 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Button, Card, Form, Grid, Header } from "semantic-ui-react";
+import { Button, Card, Form, Grid, Header, Message } from "semantic-ui-react";
 import employeeSignupImage from "../assets/images/employeeSignup.jpg";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { emloyeeSignupHandler } from "../store/actions/authActions";
 import HrmsInput from "../components/HrmsInput";
+import { Link } from "react-router-dom";
 
 const EmployeeSignupPage = () => {
   const dispatch = useDispatch();
@@ -66,10 +67,6 @@ const EmployeeSignupPage = () => {
     },
   });
 
-  const handleChangeSelect = (value, field) => {
-    formik.setFieldValue(field, value);
-  };
-
   return (
     <div style={{ marginTop: "5rem" }}>
       <Header as="h1" color="teal" textAlign="center">
@@ -81,7 +78,6 @@ const EmployeeSignupPage = () => {
             <Form.Field>
               <Grid stackable>
                 <HrmsInput
-                  columnWith="8"
                   label="* Ad"
                   placeholder="Ad"
                   value={formik.values.name}
@@ -92,7 +88,6 @@ const EmployeeSignupPage = () => {
                   showError={formik.errors.name}
                 />
                 <HrmsInput
-                  columnWith="8"
                   label="* Soyad"
                   placeholder="Soyad"
                   value={formik.values.surname}
@@ -108,7 +103,6 @@ const EmployeeSignupPage = () => {
             <Form.Field>
               <Grid stackable>
                 <HrmsInput
-                  columnWith="8"
                   label="* T.C. Kimlik No"
                   placeholder="T.C. Kimlik No"
                   value={formik.values.identityNumber}
@@ -123,7 +117,6 @@ const EmployeeSignupPage = () => {
                   showError={formik.errors.identityNumber}
                 />
                 <HrmsInput
-                  columnWith="8"
                   label="* Doğum Yılı"
                   placeholder="Doğum Yılı"
                   value={formik.values.birthYear}
@@ -140,7 +133,6 @@ const EmployeeSignupPage = () => {
             <Form.Field>
               <Grid stackable>
                 <HrmsInput
-                  columnWith="8"
                   label="* Email"
                   placeholder="Email"
                   value={formik.values.email}
@@ -156,7 +148,6 @@ const EmployeeSignupPage = () => {
             <Form.Field>
               <Grid stackable>
                 <HrmsInput
-                  columnWith="8"
                   label="* Parola"
                   placeholder="Parola"
                   value={formik.values.password}
@@ -167,7 +158,6 @@ const EmployeeSignupPage = () => {
                   showError={formik.errors.password}
                 />
                 <HrmsInput
-                  columnWith="8"
                   label="* Parola Tekrarı"
                   placeholder="Parola Tekrarı"
                   value={formik.values.passwordRepeat}
@@ -194,6 +184,14 @@ const EmployeeSignupPage = () => {
             </Button>
           </Form>
         </Card.Content>
+        <Message>
+          <h4>
+            Hesabınız var mı?
+            <Link style={{ color: "#00b5ad" }} to="/employee/login">
+              {" Giriş Yapın!"}
+            </Link>
+          </h4>
+        </Message>
       </Card>
       <img
         src={employeeSignupImage}

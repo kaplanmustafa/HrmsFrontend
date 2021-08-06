@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Header } from "semantic-ui-react";
 
-const GeneralSİgnupPage = () => {
+const GeneralLoginPage = () => {
   return (
     <div
       style={{
@@ -18,11 +18,11 @@ const GeneralSİgnupPage = () => {
         textAlign="center"
         style={{ marginBottom: "3rem" }}
       >
-        KAYDOL
+        GİRİŞ YAP
       </Header>
       <div className="ui two column grid">
         <div className="column">
-          <Link to="/employee/signup">
+          <Link to="/employee/login">
             <div className="ui fluid card">
               <div className="image">
                 <img
@@ -37,7 +37,7 @@ const GeneralSİgnupPage = () => {
           </Link>
         </div>
         <div className="column">
-          <Link to="/employer/signup">
+          <Link to="/employer/login">
             <div className="ui fluid card">
               <div className="image">
                 <img
@@ -56,4 +56,4 @@ const GeneralSİgnupPage = () => {
   );
 };
 
-export default GeneralSİgnupPage;
+export default GeneralLoginPage;
